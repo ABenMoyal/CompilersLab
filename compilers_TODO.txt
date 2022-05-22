@@ -1,0 +1,54 @@
+
+
+TODO: Remove line num printing on lex file
+TODO: Copy grammer from PowerPoint and fix syntax
+TODO: Add error on right positions in grammer
+TODO: Handle asocciative & priority
+TODO: main
+	- call yyparse()
+	
+TODO: error
+	- override yyerror(str) to print 
+	-  
+
+ASK:
+	- in case of error, should we still print the whole input file to the output file?
+	- in case of error, how we provide the error_str to yyerror(char* s) ???
+	- which tokens should have prop?
+
+
+############ Example to yyerror ###############
+int yerror(char* s){
+	 printf(“parser error:%s,at line%d/n”,s, lines);
+	 return false;
+}
+
+
+############ Example to main ###############
+int main(){
+	yyparse()? printf("Success"): printf("Failure");
+}
+
+############ getOutputFileName ###############
+// changing extension of fileName to given extension
+char* getOutputFileName(char* fileName, char* extension){
+    char* dotPos = strstr(fileName, ".sle");
+	if(!dotPos || *(dotPos+4)!=0){
+		printf("Wrong argument. file name must end with '.sle'");
+		exit(1);
+	}
+	char* outputName = (char*)calloc(strlen(fileName), 1);
+	char* outputNameRunner = outputName;
+	char* runnerPointer = fileName;
+    
+    // copy basename
+	while(runnerPointer != dotPos) *outputNameRunner++ = *runnerPointer++;
+	// add extension
+	while(*extension != 0) *outputNameRunner++ = *extension++;
+	*outputNameRunner = 0;
+	return outputName;
+}
+
+
+
+
