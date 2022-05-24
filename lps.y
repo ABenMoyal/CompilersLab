@@ -61,6 +61,7 @@ factor: ID
 
 int main(int argc, char* argv[]){
 	char* outputFileName = getOutputFileName(argv[1], ".lst");
+	// yyparse()? printf("Success"): printf("Failure");
 }
 
 void yyerror(char *errorMsg) {
