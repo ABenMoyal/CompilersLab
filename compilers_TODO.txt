@@ -33,7 +33,7 @@ int main(){
 // changing extension of fileName to given extension
 char* getOutputFileName(char* fileName, char* extension){
     char* dotPos = strstr(fileName, ".sle");
-	if(!dotPos || *(dotPos+4)!=0){
+	IF(!dotPos || *(dotPos+4)!=0){
 		printf("Wrong argument. file name must end with '.sle'");
 		exit(1);
 	}
